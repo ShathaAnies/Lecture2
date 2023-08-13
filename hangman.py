@@ -2,60 +2,48 @@ import random
 from re import A
 words= ["nawal", "shatha", "raeefah"]
 choosenWord = random.choice(words)
-choosenWordList=list(choosenWord)
-print(choosenWord)
+
+guesses = ''
 
 tries = 6
 
-# blanks= len(choosenWord) * "_ "
-wordLin= len(choosenWord)
-gussed = len(choosenWord)*"_ "
-print (gussed)
+while tries > 0:         
 
-letter= input("Please enter letter: ")
-won =True
-while won == True :
+    failed = 0             
+
+    for char in choosenWord:      
+
+        if char in guesses:    
     
-    if letter in choosenWord :
-            
-            wordLin-=1
-            
-            if wordLin>0:
-                
+            print (char,end=" "),    
 
-                
-                print (letter,end="")
-                letter= input(" yes , Please enter another letter: ")
-
-
-            else:
-                won =False
-                print(f"you Win ,, The word was {choosenWord}" )
-    else:
-                tries-=1
-                
-                if tries==0:
-                   print("you Lose :( \n    +---+ \n    O   |\n   /|\  |\n   / \  |\n      === ")
-                elif tries==5 :
-                    letter= input("false  \n    +---+ \n        |\n        |\n        |\n      ===  \n Please enter letter: ")
-                elif tries==4 :
-                    letter= input("false  \n    +---+ \n    O   |\n    |   |\n        |\n      ===  \n Please enter letter: ")
-                elif tries==3 :
-                    letter= input("false  \n    +---+ \n    O   |\n   /|   |\n        |\n      ===  \n Please enter letter: ")
-                elif tries==2 :
-                    letter= input("false  \n    +---+ \n    O   |\n   /|\  |\n        |\n      ===  \n Please enter letter: ")
-                elif tries==1 :
-                    letter= input("false  \n    +---+ \n    O   |\n   /|\  |\n   /    |\n      ===  \n Please enter letter: ")
-
-
-
-
-
-# name ="shatha"
-# name2=list(name)
-# print (name2)
-
-# for Litter in choosenWordList :
-#     gussed[Litter]=choosenWordList[Litter]
+        else:
     
+            print ("_ ",end=""),     
+       
+            failed += 1    
 
+
+    if failed == 0:        
+        print (" You won :)")
+        break            
+    guess = input("guess a character:") 
+
+    guesses += guess                    
+
+    if guess not in choosenWord:  
+ 
+        tries -= 1        
+        if tries==0:
+                   print("    +---+ \n    O   |\n   /|\  |\n   / \  |\n      ===  \n \n you Lose :( ")
+        elif tries==5 :
+                    print("false  \n    +---+ \n        |\n        |\n        |\n      ===  \n")
+        elif tries==4 :
+                    print("false  \n    +---+ \n    O   |\n    |   |\n        |\n      ===  \n")
+        elif tries==3 :
+                    print("false  \n    +---+ \n    O   |\n   /|   |\n        |\n      ===  \n")
+        elif tries==2 :
+                    print("false  \n    +---+ \n    O   |\n   /|\  |\n        |\n      ===  \n")
+        elif tries==1 :
+                    print("false  \n    +---+ \n    O   |\n   /|\  |\n   /    |\n      ===  \n")
+        
